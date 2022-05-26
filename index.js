@@ -1,10 +1,12 @@
 const express = require(`express`);
+const cors = require(`cors`);
 const formidable = require(`express-formidable`);
 const mongoose = require(`mongoose`);
 require(`dotenv`).config();
 
 const app = express();
 app.use(formidable());
+app.use(cors());
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -25,5 +27,3 @@ app.all(`*`, (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`Server start, salut`);
 });
-
-const test = `test`;
